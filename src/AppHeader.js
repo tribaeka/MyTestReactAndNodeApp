@@ -3,7 +3,7 @@ import logo from './logo.svg';
 
 export default function AppHeader() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
             <a className="navbar-brand" href="#">
                 <img src={logo} width="45" height="45" alt=""/>
             </a>
