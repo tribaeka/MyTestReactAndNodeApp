@@ -19,6 +19,7 @@ function App() {
     }, []);
 
     function loadJobs(options) {
+        console.log(options);
         setLoading(true);
         setJobs([]);
         fetch(getCorrectedJobsFetchUrl(options))
@@ -40,7 +41,11 @@ function App() {
     function getCorrectedJobsFetchUrl(options) {
         let proxyServerUrl = 'http://localhost:8080/api/jobs?';
         if (options.hasOwnProperty('page')) {
-            proxyServerUrl = proxyServerUrl.concat('page=' + options.page.toString());
+            proxyServerUrl = proxyServerUrl.concat('page=' + options.page.toString() + '&');
+            console.log(proxyServerUrl);
+        }
+        if (options.hasOwnProperty('fullTime')) {
+            proxyServerUrl = proxyServerUrl.concat('full_time=' + options.fullTime.toString() + '&');
             console.log(proxyServerUrl);
         }
         // todo add same if block for other search params

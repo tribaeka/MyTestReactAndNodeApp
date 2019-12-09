@@ -18,6 +18,7 @@ app.get('/api/jobs', (req, res) => {
         method: 'GET',
         uri: baseUri.concat(pageableUri)
     };
+    //todo multi parameters from query handler
     res.setHeader('Content-Type', 'application/json');
     rp(forJobOptions)
         .then(function (response) {

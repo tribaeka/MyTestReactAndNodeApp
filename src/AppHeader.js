@@ -9,7 +9,8 @@ export default function AppHeader({loadOptions}) {
     let fullTimeCheckBox = false;
     function filterHandler(event) {
         event.preventDefault();
-        console.log(event);
+        loadOptions.fullTime = fullTimeCheckBox;
+        loadJobs(loadOptions);
     }
 
     function handleSpecificationFilterChange(event) {
@@ -21,7 +22,10 @@ export default function AppHeader({loadOptions}) {
     }
 
     function handleFullTimeCheckBoxChange(event) {
-        fullTimeCheckBox = !!fullTimeCheckBox;
+        fullTimeCheckBox = !fullTimeCheckBox;
+        // todo uncontrolled checkbox after submit
+        // console.log(fullTimeCheckBox);
+        // console.log(event.target.value);
     }
     return (
         <header>
@@ -46,14 +50,14 @@ export default function AppHeader({loadOptions}) {
                                onChange={(event => handleSpecificationFilterChange(event))}/>
                         <input type="text"
                                className="form-control mx-1"
-                               placeholder="Filter#2"
+                               placeholder="Location Filter"
                                onChange={(event => handleLocationFilterChange(event))}/>
                         <label htmlFor="fullTimeCheckBox"
                                className="text-light mx-1">Full time</label>
                         <input id="fullTimeCheckBox"
                                type="checkbox"
-                               className="form-control mx-1"
-                               onChange={(event => handleFullTimeCheckBoxChange(event))}/>/>
+                               className="form-control mx-1" value={fullTimeCheckBox}
+                               onChange={(event => handleFullTimeCheckBoxChange(event))}/>
                         <button className="btn btn-outline-success my-2"
                                 type="submit">Search</button>
                     </form>
