@@ -51,7 +51,7 @@
   height: 0;
   margin: 8px;
   box-sizing: border-box;
-  border: 32px solid #61DAFB;
+  border: 72px solid #61DAFB;
   border-color: #61DAFB transparent #61DAFB transparent;
   animation: lds-hourglass 1.2s infinite;
 }
@@ -59,8 +59,7 @@
 .loader-container {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  height: 50%;
+  margin: 15% auto;
 }
 @keyframes lds-hourglass {
   0% {
@@ -74,5 +73,12 @@
   100% {
     transform: rotate(1800deg);
   }
+}
+
+.isDisabled {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
 }
 

@@ -1,28 +1,37 @@
 import React , {useContext} from "react";
 import {Context} from "../context";
 
-export default function JobsPages({page}) {
-    const {loadPage} = useContext(Context);
+export default function JobsPages({loadOptions}) {
+    const {loadJobs} = useContext(Context);
+    function goToNextPage() {
+        loadOptions.page++;
+        loadJobs(loadOptions);
+    }
+
+    function goToPrevPage() {
+        loadOptions.page--;
+        loadJobs(loadOptions);
+    }
     return (
         <nav className="mx-auto my-3" aria-label="Page navigation example">
             <ul className="pagination">
                 <li className="page-item"
-                    onClick={() => loadPage(page - 1)}>
+                    onClick={() => goToPrevPage()}>
                     <a className="page-link" href="#">Previous</a>
                 </li>
-                {page !== 1 && <li className="page-item"
-                                   onClick={() => loadPage(page - 1)}>
-                    <a className="page-link" href="#">{page - 1}</a>
+                {loadOptions.page !== 1 && <li className="page-item"
+                                   onClick={() => goToPrevPage()}>
+                    <a className="page-link" href="#">{loadOptions.page - 1}</a>
                 </li>}
                 <li className="page-item">
-                    <p className="page-link">{page}</p>
+                    <p className="page-link" style={{color: "black"}}>{loadOptions.page}</p>
                 </li>
                 <li className="page-item"
-                    onClick={() => loadPage(page + 1)}>
-                    <a className="page-link" href="#">{page + 1}</a>
+                    onClick={() => goToNextPage()}>
+                    <a className="page-link" href="#">{loadOptions.page + 1}</a>
                 </li>
                 <li className="page-item"
-                    onClick={() => loadPage(page + 1)}>
+                    onClick={() => goToNextPage()}>
                     <a className="page-link" href="#">Next</a>
                 </li>
             </ul>

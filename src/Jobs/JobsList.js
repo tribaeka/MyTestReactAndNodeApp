@@ -15,7 +15,7 @@ export default function JobsList(props) {
                     />
                 )
             })}
-            {!_.isEmpty(props.jobs) && <JobsPages page={props.page} setPage={props.setPage}/>}
+            {!_.isEmpty(props.jobs) && <JobsPages loadOptions={props.loadOptions}/>}
         </div>
     )
 }

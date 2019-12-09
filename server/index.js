@@ -12,7 +12,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.get('/api/jobs', (req, res) => {
-    const baseUri = 'https://jobs.github.com/positions.json?page='
+    const baseUri = 'https://jobs.github.com/positions.json?page=';
     const pageableUri = req.query.hasOwnProperty('page') ? req.query.page.toString() : '1';
     const forJobOptions = {
         method: 'GET',
