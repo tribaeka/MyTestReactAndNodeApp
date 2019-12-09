@@ -51,7 +51,7 @@ function App() {
         <Context.Provider value={{
             loadJobs, setLoadOptions
         }}>
-            <AppHeader/>
+            <AppHeader loadOptions={loadOptions}/>
             <div className="container-fluid">
                 <div className="row">
                     {loading && <Loader/>}
