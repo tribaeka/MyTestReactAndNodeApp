@@ -74,7 +74,11 @@
     transform: rotate(1800deg);
   }
 }
-
+.hot-searches-list {
+  list-style-type: none;
+  font-size: 24px;
+  padding-left: 12px;
+}
 .isDisabled {
   color: currentColor;
   cursor: not-allowed;

@@ -11,8 +11,6 @@ export default function FilterJobsForm({loadOptions}) {
         loadOptions.specificationFilter = specificationFilter;
         loadOptions.locationFilter = locationFilter;
         loadOptions.fullTime = fullTimeCheckBox;
-        console.log(specificationFilter);
-        console.log(locationFilter);
         loadJobs(loadOptions);
     }
 

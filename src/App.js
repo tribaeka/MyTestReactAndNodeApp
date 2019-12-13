@@ -3,6 +3,7 @@ import {Context} from "./context";
 import AppHeader from "./AppHeader";
 import AppFooter from "./AppFooter";
 import JobsList from "./Jobs/JobsList";
+import JobsHotSearches from "./Jobs/JobsHotSearches";
 import './App.css';
 import Loader from "./Loader";
 import * as _ from 'lodash';
@@ -65,11 +66,14 @@ function App() {
                     {loading && <Loader/>}
                 </div>
                 <div className="row my-4">
-                    <div className="col-8 offset-2">
+                    <div className="col-8 offset-1">
                         <JobsList
                             jobs={jobs}
                             loadOptions={loadOptions}
                         />
+                    </div>
+                    <div className="col-2">
+                        {!loading && <JobsHotSearches/>}
                     </div>
                 </div>
             </div>
