@@ -11,14 +11,32 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+function correctUrl(query){
+    let baseUri = 'https://jobs.github.com/positions.json?';
+    console.log(query);
+    if (query.hasOwnProperty('page')) {
+        baseUri = baseUri.concat('page=' + query.page.toString() + '&');
+    }
+    if (query.hasOwnProperty('fullTime')) {
+        baseUri = baseUri.concat('full_time=' + query.fullTime.toString() + '&');
+    }
+    if (query.hasOwnProperty('specificationFilter') && !!query.specificationFilter){
+        baseUri = baseUri.concat('description=' + query.specificationFilter.toString() + '&');
+    }
+    if (query.hasOwnProperty('locationFilter') && !!query.locationFilter){
+        baseUri = baseUri.concat('location=' + query.locationFilter.toString() + '&');
+    }
+
+    return baseUri;
+}
+
 app.get('/api/jobs', (req, res) => {
-    const baseUri = 'https://jobs.github.com/positions.json?page=';
-    const pageableUri = req.query.hasOwnProperty('page') ? req.query.page.toString() : '1';
+    console.log(correctUrl(req.query));
     const forJobOptions = {
         method: 'GET',
-        uri: baseUri.concat(pageableUri)
+        uri: correctUrl(req.query)
     };
-    //todo multi parameters from query handler
+
     res.setHeader('Content-Type', 'application/json');
     rp(forJobOptions)
         .then(function (response) {

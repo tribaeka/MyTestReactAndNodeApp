@@ -19,7 +19,6 @@ function App() {
     }, []);
 
     function loadJobs(options) {
-        console.log(options);
         setLoading(true);
         setJobs([]);
         fetch(getCorrectedJobsFetchUrl(options))
@@ -42,13 +41,17 @@ function App() {
         let proxyServerUrl = 'http://localhost:8080/api/jobs?';
         if (options.hasOwnProperty('page')) {
             proxyServerUrl = proxyServerUrl.concat('page=' + options.page.toString() + '&');
-            console.log(proxyServerUrl);
         }
         if (options.hasOwnProperty('fullTime')) {
-            proxyServerUrl = proxyServerUrl.concat('full_time=' + options.fullTime.toString() + '&');
-            console.log(proxyServerUrl);
+            proxyServerUrl = proxyServerUrl.concat('fullTime=' + options.fullTime.toString() + '&');
         }
-        // todo add same if block for other search params
+        if (options.hasOwnProperty('specificationFilter') && !!options.specificationFilter){
+            proxyServerUrl = proxyServerUrl.concat('specificationFilter=' + options.specificationFilter.toString() + '&');
+        }
+        if (options.hasOwnProperty('locationFilter') && !!options.locationFilter){
+            proxyServerUrl = proxyServerUrl.concat('locationFilter=' + options.locationFilter.toString() + '&');
+        }
+        console.log(proxyServerUrl);
         return proxyServerUrl;
     }
 
