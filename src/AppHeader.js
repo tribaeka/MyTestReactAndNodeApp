@@ -14,6 +14,9 @@ export default function AppHeader({loadOptions}) {
                         <li className="nav-item active">
                             <a className="nav-link" href="/">Home</a>
                         </li>
+                        <li className="nav-item active">
+                            <a className="nav-link" href="https://jobs.github.com/api">Source</a>
+                        </li>
                     </ul>
                     <FilterJobsForm loadOptions={loadOptions}/>
                 </div>
