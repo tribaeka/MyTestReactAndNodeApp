@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 export default function JobsList(props) {
 
     return (
-        <div className="list-group">
+        <div className="list-group list-group-flush">
             {props.jobs.map(job => {
                 return (
                     <JobsListItem

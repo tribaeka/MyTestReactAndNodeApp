@@ -7,8 +7,12 @@ export default function JobsListItem({job}) {
     const formattedDate = moment(date).format('LL');
     return (
         <a href={howToApplyLink} className="list-group-item list-group-item-action">
+            <div className="d-flex w-100 pt-3 justify-content-between">
+                <h5 className="card-title">{job.title}</h5>
+                <p>{job.location}</p>
+            </div>
             <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{job.title}</h5>
+                <small>{job.company} - <span className={"text-success font-weight-bold"}>{job.type}</span></small>
                 <small>{formattedDate}</small>
             </div>
         </a>
