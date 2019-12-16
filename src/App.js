@@ -62,9 +62,7 @@ function App() {
         }}>
             <AppHeader loadOptions={loadOptions}/>
             <div className="container-fluid">
-                <div className="row">
-                    {loading && <Loader/>}
-                </div>
+                {loading && <Loader/>}
                 <div className="row my-4">
                     <div className="col-8 offset-1">
                         <JobsList
