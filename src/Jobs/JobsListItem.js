@@ -8,12 +8,12 @@ export default function JobsListItem({job}) {
     return (
         <a href={howToApplyLink} className="list-group-item list-group-item-action">
             <div className="d-flex w-100 pt-3 justify-content-between">
-                <h5 className="card-title">{job.title}</h5>
+                <h5 className="card-title text-primary">{job.title}</h5>
                 <p>{job.location}</p>
             </div>
             <div className="d-flex w-100 justify-content-between">
-                <small>{job.company} - <span className={"text-success font-weight-bold"}>{job.type}</span></small>
-                <small>{formattedDate}</small>
+                <p>{job.company} - <span className={"text-success font-weight-bold"}>{job.type}</span></p>
+                <small className="text-muted">{formattedDate}</small>
             </div>
         </a>
     )

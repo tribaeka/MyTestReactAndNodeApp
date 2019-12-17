@@ -32,13 +32,13 @@ function correctUrl(query){
 
 app.get('/api/jobs', (req, res) => {
     console.log(correctUrl(req.query));
-    const forJobOptions = {
+    const jobsFetchOptions = {
         method: 'GET',
         uri: correctUrl(req.query)
     };
 
     res.setHeader('Content-Type', 'application/json');
-    rp(forJobOptions)
+    rp(jobsFetchOptions)
         .then(function (response) {
             res.send(response);
         }).catch(function (err) {
