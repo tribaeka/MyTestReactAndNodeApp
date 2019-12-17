@@ -1,8 +1,8 @@
 import React from "react";
 import logo from './logo.svg';
-import FilterJobsForm from "./forms/FilterJobsForm";
+import {Link} from "react-router-dom";
 
-export default function AppHeader({loadOptions}) {
+export default function AppHeader() {
     return (
         <header>
             <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -11,14 +11,16 @@ export default function AppHeader({loadOptions}) {
                 </a>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="/">Home</a>
+                        <li className="nav-item">
+                            <Link to="/" className="nav-link">Home</Link>
                         </li>
-                        <li className="nav-item active">
+                        <li className="nav-item">
+                            <Link to="/login" className="nav-link">Login</Link>
+                        </li>
+                        <li className="nav-item">
                             <a className="nav-link" href="https://jobs.github.com/api">Source</a>
                         </li>
                     </ul>
-                    <FilterJobsForm loadOptions={loadOptions}/>
                 </div>
             </nav>
         </header>

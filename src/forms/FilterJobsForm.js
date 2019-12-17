@@ -39,7 +39,7 @@ export default function FilterJobsForm({loadOptions}) {
                    value={locationFilter}
                    onChange={(event => handleLocationFilterChange(event))}/>
             <label htmlFor="fullTimeCheckBox"
-                   className="text-light mx-1">Full time</label>
+                   className="text-black mx-1">Full time</label>
             <input id="fullTimeCheckBox"
                    type="checkbox"
                    className="form-control mx-1"

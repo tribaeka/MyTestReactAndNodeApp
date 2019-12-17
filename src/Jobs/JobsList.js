@@ -1,6 +1,6 @@
 import React from "react";
 import JobsListItem from './JobsListItem';
-import JobsPages from "./JobsPages";
+import JobsPageable from "./JobsPageable";
 import * as _ from 'lodash';
 
 export default function JobsList(props) {
@@ -15,7 +15,7 @@ export default function JobsList(props) {
                     />
                 )
             })}
-            {!_.isEmpty(props.jobs) && <JobsPages loadOptions={props.loadOptions}/>}
+            {!_.isEmpty(props.jobs) && <JobsPageable loadOptions={props.loadOptions}/>}
         </div>
     )
 }

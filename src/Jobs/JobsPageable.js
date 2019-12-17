@@ -1,7 +1,7 @@
 import React , {useContext} from "react";
 import {Context} from "../context";
 
-export default function JobsPages({loadOptions}) {
+export default function JobsPageable({loadOptions}) {
     const {loadJobs} = useContext(Context);
     function goToNextPage() {
         loadOptions.page++;
