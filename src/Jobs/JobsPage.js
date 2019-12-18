@@ -50,7 +50,6 @@ export default function JobsPage() {
         if (options.hasOwnProperty('locationFilter') && !!options.locationFilter){
             proxyServerUrl = proxyServerUrl.concat('locationFilter=' + options.locationFilter.toString() + '&');
         }
-        console.log(proxyServerUrl);
         return proxyServerUrl;
     }
 

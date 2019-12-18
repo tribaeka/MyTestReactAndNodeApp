@@ -7,10 +7,13 @@ export default function LoginPage() {
         <div className="container">
             <div className="row form-wrapper">
                 <div className="col-8 offset-2">
-                    <form className="border border-info rounded p-3">
+                    <form className="border border-info rounded p-3"
+                          method="post"
+                          action="/auth/login"
+                    >
                         <div className="form-group">
-                            <label htmlFor="inputEmail">Email address</label>
-                            <input type="text" className="form-control" id="inputEmail" aria-describedby="emailHelp"/>
+                            <label htmlFor="inputUsername">Username</label>
+                            <input type="text" className="form-control" id="inputUsername"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="inputPassword">Password</label>
