@@ -2,14 +2,16 @@ const express = require('express');
 const rp = require('request-promise');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const expressApp = express();
+expressApp.use(bodyParser.urlencoded({extended: false}));
 
-const app = express();
-app.use(bodyParser.urlencoded({extended: false}));
+
 const corsOptions = {
     origin: 'http://localhost:3000',
     optionsSuccessStatus: 200
 };
-app.use(cors(corsOptions));
+
+expressApp.use(cors(corsOptions));
 
 function correctUrl(query){
     let baseUri = 'https://jobs.github.com/positions.json?';
@@ -30,7 +32,7 @@ function correctUrl(query){
     return baseUri;
 }
 
-app.get('/api/jobs', (req, res) => {
+expressApp.get('/api/jobs', (req, res) => {
     console.log(correctUrl(req.query));
     const jobsFetchOptions = {
         method: 'GET',
@@ -47,5 +49,5 @@ app.get('/api/jobs', (req, res) => {
         });
 });
 
-app.listen(8080, () => console.log(`Example app listening on port 8080!`));
+expressApp.listen(8080, () => console.log(`Example app listening on port 8080!`));
 

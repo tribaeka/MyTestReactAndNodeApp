@@ -86,3 +86,8 @@
   text-decoration: none;
 }
 
+.form-wrapper{
+  width: 100%;
+  margin: 25% auto;
+}
+
