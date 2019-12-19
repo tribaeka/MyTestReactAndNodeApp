@@ -1,30 +1,10 @@
-const mySqlConnection = require('./dbHelpers/mySqlWrapper');
-const bearerTokensDBHelper = require('./dbHelpers/bearerTokensDBHelper')(mySqlConnection);
-const userDBHelper = require('./dbHelpers/userDBHelper')(mySqlConnection);
 const express = require('express');
 const rp = require('request-promise');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const oAuth2Server = require('node-oauth2-server');
-
-/* Here we instantiate the model we just made and inject the dbHelpers we use in it */
-const oAuthModel =
-    require('./authorisation/accessTokenModel')(userDBHelper, bearerTokensDBHelper);
 const expressApp = express();
-expressApp.use(bodyParser.urlencoded({extended: true}));
-expressApp.oauth = oAuth2Server({
-    model: oAuthModel,
-    grants: ['password'],
-    debug: true
-})
+expressApp.use(bodyParser.urlencoded({extended: false}));
 
-const authRoutesMethods = require('./authorisation/authRoutesMethods')(userDBHelper);
-const authRouter = require('./authorisation/authRouter')(express.Router(),
-                                                            expressApp,
-                                                            authRoutesMethods);
-
-expressApp.use('/auth', authRouter);
-expressApp.use(expressApp.oauth.errorHandler())
 
 const corsOptions = {
     origin: 'http://localhost:3000',
