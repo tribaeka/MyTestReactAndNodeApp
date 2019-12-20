@@ -13,9 +13,8 @@ const corsOptions = {
 
 expressApp.use(cors(corsOptions));
 
-function correctUrl(query){
+function correctUrlForJobsList(query){
     let baseUri = 'https://jobs.github.com/positions.json?';
-    console.log(query);
     if (query.hasOwnProperty('page')) {
         baseUri = baseUri.concat('page=' + query.page.toString() + '&');
     }
@@ -32,11 +31,17 @@ function correctUrl(query){
     return baseUri;
 }
 
+function getUrlForSingleJob(query){
+    const urlPrefix = 'https://jobs.github.com/positions/';
+    const urlPostfix = '.json';
+    return urlPrefix + query.id + urlPostfix;
+}
+
 expressApp.get('/api/jobs', (req, res) => {
-    console.log(correctUrl(req.query));
+    console.log(correctUrlForJobsList(req.query));
     const jobsFetchOptions = {
         method: 'GET',
-        uri: correctUrl(req.query)
+        uri: correctUrlForJobsList(req.query)
     };
 
     res.setHeader('Content-Type', 'application/json');
@@ -47,6 +52,21 @@ expressApp.get('/api/jobs', (req, res) => {
             console.error('Request was failed: ');
             res.send(JSON.stringify(err));
         });
+});
+
+expressApp.get('/api/job', (req, res) => {
+    const jobsFetchOptions = {
+        method: 'GET',
+        uri: getUrlForSingleJob(req.query)
+    };
+    res.setHeader('Content-Type', 'application/json');
+    rp(jobsFetchOptions)
+        .then(function (response) {
+            res.send(response);
+        }).catch(function (err) {
+        console.error('Request was failed: ');
+        res.send(JSON.stringify(err));
+    });
 });
 
 expressApp.listen(8080, () => console.log(`Example app listening on port 8080!`));
