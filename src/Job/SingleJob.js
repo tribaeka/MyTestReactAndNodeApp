@@ -12,7 +12,7 @@ export default function SingleJob({job}) {
                         <hr/>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row mb-5">
                     <div className="col-8">
                         <div dangerouslySetInnerHTML={{__html: job.description}}/>
                     </div>

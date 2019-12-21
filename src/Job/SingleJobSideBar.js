@@ -9,10 +9,9 @@ export default function SingleJobSideBar({company, companyLogo, companyUrl, howT
                 <div className="col-12 inner-company-to">
                     <h5 className="pt-2">{company}</h5>
                     <hr/>
-                    <img className="mx-4"
+                    <img className="col-12 h-auto"
                          src={companyLogo}
-                         width={280}
-                         height={100} alt="Company logo"/>
+                         alt="Company logo"/>
                     <hr/>
                     <p>
                         <a href={companyUrl}>
@@ -25,7 +24,7 @@ export default function SingleJobSideBar({company, companyLogo, companyUrl, howT
                 <div className="col-12 inner-how-to">
                     <h5 className="pt-2">How to apply</h5>
                     <hr/>
-                    <div dangerouslySetInnerHTML={{__html: howToApply}}/>
+                    <div className="col-12" dangerouslySetInnerHTML={{__html: howToApply}}/>
                 </div>
             </div>
         </div>
