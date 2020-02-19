@@ -72,7 +72,7 @@ export default function JobsHotSearches() {
             <hr/>
             {[...hotSearchesMap.keys()].map(title => {
                 return (
-                    <a className="badge badge-primary m-1 text-white"
+                    <a className="badge badge-primary m-1 text-white cursor-pointer"
                        key={title}
                        onClick={() => hotSearchesHandler({title})}>
                         {title}
